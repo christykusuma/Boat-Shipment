@@ -5,6 +5,7 @@ class CreateBoats < ActiveRecord::Migration[5.1]
       t.integer :containers
       t.string :location
 
+      t.references :user
       t.timestamps
     end
   end
