@@ -4,13 +4,14 @@ class UsersController < ApplicationController
 
 	# User profile page
 	def profile
+		@boats = Boat.where(user_id: current_user.id)
 	end
 
 	private
 
 	# Set user
 	def set_user
-		@user = User.find(params[:id])
+		@user = User.find_by(params[:id])
 	end
 
 	# Pass in user params

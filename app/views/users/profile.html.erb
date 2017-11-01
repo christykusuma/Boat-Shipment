@@ -3,7 +3,7 @@
 <div class="user-profile">
 
     <!-- If there is a current user, display home page -->
-  <% if @current_user %>
+  <% if current_user %>
 
   <div class="all-boats">
     <% if @boats.length > 0 %>
@@ -28,13 +28,6 @@
   	<% end %>
 
   </div>
-
-
-  <!-- If no current user, go to login page -->
-  <% else %>
-
-    <%= render 'users/login' %>
-
   <% end %>
 
 </div>
