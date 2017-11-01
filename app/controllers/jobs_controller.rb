@@ -1,10 +1,12 @@
 class JobsController < ApplicationController
 	# Job profile page
 	def profile
+		@jobs = Job.find_by(params[:id])
 	end
 
 	# New job page
 	def new
+		@job = Job.new
 	end
 
 	# Edit job page

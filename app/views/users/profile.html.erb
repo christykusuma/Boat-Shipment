@@ -5,17 +5,33 @@
     <!-- If there is a current user, display home page -->
   <% if current_user %>
 
+  <div class="user-info">
+    <%= image_tag current_user.photo.url(:medium) %>
+    <h1>
+    <%= current_user.fname %>
+    <%= current_user.lname %>
+    </h1>
+     <%= link_to 'Edit Profile', edit_user_registration_path(@user) %>
+
+  </div>
+
   <div class="all-boats">
+    <h1>Your boats:</h1>
+        <%= link_to 'Create New Boat', new_boat_path %>
     <% if @boats.length > 0 %>
-        <% @boats.each do |boat| %>
       <div>
         <table>
+          <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Storage Capacity</th>
+            <th>Earnings</th>
+          </tr>
+          <% @boats.each do |boat| %>
             <tr>
-              <td>
-              	<%= boat.name %>
-              	<%= boat.location %>
-              	<%= boat.storage %>
-              </td>
+              <td><%= link_to boat.name, boat_path %></td>
+              <td><%= boat.location %></td>
+              <td><%= boat.storage %></td>
             </tr>
         </table>
       </div>

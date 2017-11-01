@@ -2,4 +2,59 @@
 
 <div class="boat-profile">
 
+	<h1><%= @boat.name %></h1>
+	<%= link_to 'Edit Boat', edit_boat_path(@boat) %>
+
+	<h2>Current Jobs:</h2>
+
+	<table>
+		<tr>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Origin</th>
+			<th>Destination</th>
+			<th># of Containers</th>
+			<th>Cost</th>
+		</tr>
+		<% @boat.jobs.each do |job| %>
+		<tr>
+			<td><%= job.title %></td>
+			<td><%= job.description %></td>
+			<td><%= job.origin %></td>
+			<td><%= job.destination %></td>
+			<td><%= job.containers %></td>
+			<td><%= job.cost %></td>
+		</tr>
+	<% end %>
+
+	</table>
+
+	<h2>Available Jobs:</h2>
+
+	<table>
+		<tr>
+			<th>Title</th>
+			<th>Description</th>
+			<th>Origin</th>
+			<th>Destination</th>
+			<th># of Containers</th>
+			<th>Cost</th>
+			<th></th>
+		</tr>
+		<% @origin_jobs.each do |job| %>
+			<% unless job.assignments.any? %>
+		<tr>
+			<td><%= job.title %></td>
+			<td><%= job.description %></td>
+			<td><%= job.origin %></td>
+			<td><%= job.destination %></td>
+			<td><%= job.containers %></td>
+			<td><%= job.cost %></td>
+			<td><%= link_to "Add", add_job_path(@boat.id, job.id) %></td>
+		</tr>
+		<% end %>
+	<% end %>
+
+	</table>
+
 </div>
