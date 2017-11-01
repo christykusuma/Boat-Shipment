@@ -112,11 +112,6 @@ Assignment.create([
 		job_id: 2
 	},
 	{
-		id: 3,
-		boat_id: 1,
-		job_id: 3
-	},
-	{
 		id: 4,
 		boat_id: 2,
 		job_id: 4

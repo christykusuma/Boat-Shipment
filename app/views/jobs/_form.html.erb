@@ -1,35 +1,46 @@
 <div class="form">
-    <div class="field">
-      <%= form.label :title %>
-      <%= form.text_field :title, id: :job_title %>
-    </div>
 
-    <div class="field">
-      <%= form.label :description %>
-      <%= form.text_area :description, id: :job_description %>
-    </div>
+  <div class="form-table">
+  <%= form_with(model: job, local: true, url: url) do |form| %>
 
-    <div class="field">
-      <%= form.label :origin %>
-      <%= form.text_field :origin, id: :job_origin %>
-    </div>
+  <table>
+    <tr class="field">
+      <td><%= form.label :title %></td>
+      <td><%= form.text_field :title, id: :job_title %></td>
+    </tr>
 
-    <div class="field">
-      <%= form.label :destination %>
-      <%= form.text_field :destination, id: :job_destination %>
-    </div>
+    <tr class="field">
+      <td><%= form.label :description %></td>
+      <td><%= form.text_area :description, id: :job_description %></td>
+    </tr>
 
-    <div class="field">
-      <%= form.label :cost %>
-      <%= form.number_field :cost, id: :job_cost %>
-    </div>
+    <tr class="field">
+      <td><%= form.label :origin %></td>
+      <td><%= form.text_field :origin, id: :job_origin %></td>
+    </tr>
 
-    <div class="field">
-      <%= form.label :containers %>
-      <%= form.number_field :containers, id: :job_containers %>
-    </div>
+    <tr class="field">
+      <td><%= form.label :destination %></td>
+      <td><%= form.text_field :destination, id: :job_destination %></td>
+    </tr>
 
-    <div class="actions">
-      <%= form.submit %>
-    </div>
+    <tr class="field">
+      <td><%= form.label :cost %></td>
+      <td><%= form.number_field :cost, id: :job_cost %></td>
+    </tr>
+
+    <tr class="field">
+      <td><%= form.label :containers %></td>
+      <td><%= form.number_field :containers, id: :job_containers %></td>
+    </tr>
+
+    <tr class="actions">
+      <td></td>
+      <td><%= form.submit %></td>
+    </tr>
+  </table>
+  <% end %>
+
+  </div>
 </div>
+

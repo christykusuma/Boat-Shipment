@@ -1,20 +1,28 @@
 <div class="form">
-    <div class="field">
-      <%= form.label :name %>
-      <%= form.text_field :name, id: :boat_name %>
-    </div>
 
-    <div class="field">
-      <%= form.label :storage %>
-      <%= form.text_field :storage, id: :boat_storage %>
-    </div>
+  <div class="form-table">
+  <%= form_with(model: boat, local: true, url: url) do |form| %>
 
-    <div class="field">
-      <%= form.label :location %>
-      <%= form.text_field :location, id: :boat_location %>
-    </div>
+  <table>
+    <tr class="field">
+      <td><%= form.label :name %></td>
+      <td><%= form.text_field :name, id: :boat_name %></td>
+    </tr>
+    <tr class="field">
+      <td><%= form.label :storage %></td>
+      <td><%= form.number_field :storage, id: :boat_storage %></td>
+    </tr>
+    <tr class="field">
+      <td><%= form.label :location %></td>
+      <td><%= form.text_field :location, id: :boat_location %></td>
+    </tr>
+    <tr class="actions">
+      <td></td>
+      <td><%= form.submit %></td>
+    </tr>
 
-    <div class="actions">
-      <%= form.submit %>
-    </div>
+  </table>
+    <% end %>
+
+  </div>
 </div>
