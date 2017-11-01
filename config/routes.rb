@@ -6,30 +6,6 @@ Rails.application.routes.draw do
   # First page: user profile page
   root 'users#profile'
 
-  # Profile page
-  get 'profile/:id' => 'users#profile', as: :profile
-
-  # Login form filled --> user profile page
-  post 'login' => 'users#handle_login', as: :login
-
-  # New user button clicked --> sign up page
-  get 'signup' => 'users#signup', as: :signup
-
-  # Sign up form filled --> user profile page
-  post 'signup' => 'users#handle_create'
-
-  # User profile edit clicked --> edit user profile
-  get 'edituser' => 'users#edit', as: :edit_user
-
-  # Edit user form filled --> user profile page
-  put 'edituser' => 'users#handle_update'
-
-  # Delete user button clicked --> user profile page (login form)
-  delete 'userprofile' => 'users#handle_delete', as: :delete_user
-
-  # Logout user button clicked --> user profile page (login form)
-  get 'logout' => 'users#handle_logout', as: :logout
-
 ########### BOAT #################
   # New boat button clicked --> new boat page
   get 'newboat' => 'boats#new', as: :new_boat
