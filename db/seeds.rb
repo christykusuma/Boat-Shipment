@@ -75,8 +75,8 @@ Job.create([
 		id: 4,
 		title: 'Grape Shipment',
 		description: 'Ships grapes',
-		origin: 'New York',
-		destination: 'Boston',
+		origin: 'Boston',
+		destination: 'New York',
 		cost: 20000,
 		containers: 20
 	},
@@ -84,8 +84,8 @@ Job.create([
 		id: 5,
 		title: 'Strawberry Shipment',
 		description: 'Ships strawberries',
-		origin: 'New York',
-		destination: 'Boston',
+		origin: 'Boston',
+		destination: 'New York',
 		cost: 20000,
 		containers: 20
 	},
@@ -93,8 +93,8 @@ Job.create([
 		id: 6,
 		title: 'Watermelon Shipment',
 		description: 'Ships watermelons',
-		origin: 'New York',
-		destination: 'Boston',
+		origin: 'Boston',
+		destination: 'New York',
 		cost: 20000,
 		containers: 20
 	}
@@ -115,20 +115,5 @@ Assignment.create([
 		id: 3,
 		boat_id: 1,
 		job_id: 3
-	},
-	{
-		id: 4,
-		boat_id: 2,
-		job_id: 4
-	},
-	{
-		id: 5,
-		boat_id: 2,
-		job_id: 5
-	},
-	{
-		id: 6,
-		boat_id: 2,
-		job_id: 6
 	}
 ])
