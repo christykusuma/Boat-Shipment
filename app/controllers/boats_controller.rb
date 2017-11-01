@@ -47,8 +47,8 @@ class BoatsController < ApplicationController
 	    end
 	end
 
-	# Add job
-	  def add_job
+	# Add assignment
+	  def add_assignment
 	    @assignment = Assignment.new(assignment_params)
 	    respond_to do |format|
 	      if @assignment.save
@@ -56,6 +56,15 @@ class BoatsController < ApplicationController
 	      else
 	        format.html { render boat_path }
 	      end
+	    end
+	  end
+
+	# Add assignment
+	  def delete_assignment
+	    @assignment = Assignment.find_by(assignment_params)
+	    @assignment.destroy
+	    respond_to do |format|
+	      format.html { redirect_to boat_path, notice: 'Job was successfully deleted.' }
 	    end
 	  end
 

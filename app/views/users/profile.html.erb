@@ -7,11 +7,10 @@
 
   <div class="user-info">
     <%= image_tag current_user.photo.url(:medium) %>
-    <h1>
+    <h1 style="display: inline;">
     <%= current_user.fname %>
     <%= current_user.lname %>
-    </h1>
-     <%= link_to 'Edit Profile', edit_user_registration_path(@user) %>
+    </h1> | <%= link_to 'Edit Profile', edit_user_registration_path(@user) %>
 
   </div>
 
@@ -24,7 +23,7 @@
           <tr>
             <th>Name</th>
             <th>Location</th>
-            <th>Storage Capacity</th>
+            <th>Capacity</th>
             <th>Earnings</th>
           </tr>
           <% @boats.each do |boat| %>
@@ -32,6 +31,13 @@
               <td><%= link_to boat.name, boat_path %></td>
               <td><%= boat.location %></td>
               <td><%= boat.storage %></td>
+
+              <!-- Count earnings from total current jobs -->
+              <% earnings_count = 0 %>
+              <% boat.jobs.each do |job| %>
+                <% earnings_count += job.cost %>
+              <% end %>
+              <td><%= earnings_count %></td>
             </tr>
         </table>
       </div>

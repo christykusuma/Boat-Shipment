@@ -22,8 +22,11 @@ Rails.application.routes.draw do
   # Edit boat form filled --> boat profile page
   patch 'editboat/:id' => 'boats#handle_update'
 
-  # Add job button clicked --> Moves from available to current jobs
-  get 'addjob/:boat_id/:job_id' => 'boats#add_job', as: :add_job
+  # Add assignment button clicked --> Moves from available to current jobs
+  get 'addassignment/:boat_id/:job_id' => 'boats#add_assignment', as: :add_assignment
+
+  # Delete assignment button clicked --> Moves from available to current jobs
+  delete 'deleteassignment/:boat_id/:job_id' => 'boats#delete_assignment', as: :delete_assignment
 
   # Delete boat button clicked --> user profile page
   delete 'boatprofile/:id' => 'boats#handle_delete', as: :delete_boat
