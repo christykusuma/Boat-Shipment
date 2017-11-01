@@ -12,14 +12,16 @@ User.create([
 		fname: 'Christy',
 		lname: 'Kusuma',
 		email: 'ckusuma@bu.edu',
-		password: '1'
+		password: '1234567',
+		photo: open('http://static.wixstatic.com/media/3cc615_323631ae328f4ea2b8a4d8837f08107d.jpg_256')
 	},
 	{
 		id: 2,
 		fname: 'Mahima',
 		lname: 'Tuladhar',
 		email: 'mtuladhar@gmail.com',
-		password: '1'
+		password: '1234567',
+		photo: open('http://static.wixstatic.com/media/3cc615_323631ae328f4ea2b8a4d8837f08107d.jpg_256')
 	}
 ])
 
