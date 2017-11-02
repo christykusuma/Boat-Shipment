@@ -1,12 +1,10 @@
-<%= render 'users/navbar' %>
 
-<div class="boat-profile">
 
-	<h1 style="display: inline;"><%= @boat.name %></h1> | <%= link_to 'Edit Boat', edit_boat_path(@boat) %><br>
-	Storage capacity: <%= @boat.storage %><br>
-	Current location: <%= @boat.location %>
+<div class="boat-profile" class="page">
 
-	<%= link_to 'Delete Boat', delete_boat_path(@boat), method: :delete %>
+	<h1 class="title" style="display: inline;"><%= @boat.name %></h1> | <%= link_to 'Edit boat', edit_boat_path(@boat) %><br>
+	<p>Storage capacity: <%= @boat.storage %></p>
+	<p>Current location: <%= @boat.location %></p>
 
 	<h2>Current Jobs:</h2>
 
@@ -32,7 +30,7 @@
 			<td><%= job.containers %></td><% container_count += job.containers %>
 			<td><%= job.cost %></td>
 
-			<td><%= link_to "x", delete_assignment_path(@boat.id, job.id), method: :delete %></td>
+			<td><%= link_to "x", delete_assignment_path(@boat.id, job.id), method: :delete, :class => "delete-assignment" %></td>
 		</tr>
 	<% end %>
 
@@ -71,7 +69,7 @@
 			<!-- If adding job would exceed capacity, will not show add job button -->
 			<% if (container_count + job.containers) <= @boat.storage %>
 
-			<td><%= link_to "Add", add_assignment_path(@boat.id, job.id) %></td>
+			<td><%= link_to "Add", add_assignment_path(@boat.id, job.id), :class => "add-button" %></td>
 
 			<% end %>
 
@@ -87,5 +85,7 @@
 		<p>There are no more available jobs.</p>
 
 	<% end %>
+
+		<%= link_to 'Delete', delete_boat_path(@boat), method: :delete, :class => "delete-button" %>
 
 </div>
