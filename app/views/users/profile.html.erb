@@ -1,5 +1,8 @@
 <%= render 'users/navbar' %>
-
+<body>
+<div class="stars">
+</div>
+</div>
 <div class="user-profile">
 
     <!-- If there is a current user, display home page -->
@@ -15,7 +18,7 @@
   </div>
 
   <div class="all-boats">
-    <h1>Your boats:</h1>
+    <h1>Your Boats:</h1>
         <%= link_to 'Create New Boat', new_boat_path %>
     <% if @boats.length > 0 %>
       <div>
@@ -53,3 +56,4 @@
   <% end %>
 
 </div>
+</body>
