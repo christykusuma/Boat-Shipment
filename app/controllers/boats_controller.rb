@@ -1,9 +1,10 @@
 class BoatsController < ApplicationController
-	before_action :set_boat, only: [:edit,:profile,:handle_update,:handle_delete]
+	before_action :set_boat, only: [:edit,:profile,:handle_update,:handle_delete, :add_assignment, :delete_assignment]
 
 	# Boats profile page
 	def profile
 		@origin_jobs = Job.where(origin: @boat.location)
+		@origin_assignments = Job.joins("LEFT JOIN assignments ON jobs.id = assignments.job_id WHERE assignments.job_id IS NULL")
 	end
 
 	# New boat page
@@ -52,7 +53,7 @@ class BoatsController < ApplicationController
 	    @assignment = Assignment.new(assignment_params)
 	    respond_to do |format|
 	      if @assignment.save
-	      format.html { redirect_to boat_path, notice: 'Job was successfully added.' }
+	      format.html { redirect_back fallback_location: :root, notice: 'Job was successfully added.' }
 	      else
 	        format.html { render boat_path }
 	      end
@@ -64,7 +65,7 @@ class BoatsController < ApplicationController
 	    @assignment = Assignment.find_by(assignment_params)
 	    @assignment.destroy
 	    respond_to do |format|
-	      format.html { redirect_to boat_path, notice: 'Job was successfully deleted.' }
+	      format.html { redirect_back fallback_location: :root, notice: 'Job was successfully deleted.' }
 	    end
 	  end
 

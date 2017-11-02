@@ -12,6 +12,7 @@
 
 	<!-- Total number of containers -->
 	<% container_count = 0 %>
+	<% if @boat.jobs.length > 0 %>
 
 	<table>
 		<tr>
@@ -36,8 +37,15 @@
 	<% end %>
 
 	</table>
+	<% else %>
 
-	<h2>Available Jobs:</h2>
+		<p>You have no current jobs.</p>
+
+	<% end %>
+
+	<h2 style="display: inline;">Available Jobs:</h2> | <%= link_to "Create new job", new_job_path(@boat.id) %>
+
+	<% if @origin_assignments.length > 0 %>
 
 	<table>
 		<tr>
@@ -51,6 +59,7 @@
 		</tr>
 		<% @origin_jobs.each do |job| %>
 			<% unless job.assignments.any? %>
+
 		<tr>
 			<td><%= link_to job.title, job_path(@boat.id, job.id) %></td> 
 			<td><%= job.description %></td>
@@ -66,10 +75,17 @@
 
 			<% end %>
 
+
 		</tr>
 		<% end %>
 	<% end %>
 
 	</table>
+
+	<% else %>
+
+		<p>There are no more available jobs.</p>
+
+	<% end %>
 
 </div>
