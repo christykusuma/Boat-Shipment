@@ -1,8 +1,9 @@
 class JobsController < ApplicationController
-	before_action :set_job, only: [:edit,:profile,:handle_update,:handle_delete]
+	before_action :set_job, only: [:edit, :profile, :handle_update, :handle_delete]
+	before_action :set_boat, only: [:profile, :handle_delete]
 	# Job profile page
 	def profile
-		@jobs = Job.find_by(params[:id])
+		
 	end
 
 	# New job page
@@ -39,9 +40,12 @@ class JobsController < ApplicationController
 
 	# Delete job
 	def handle_delete
-		@job.destroy
+	    Job.transaction do
+	      @job.assignments.destroy_all
+	      @job.destroy
+	    end
 	    respond_to do |format|
-	      format.html { redirect_back fallback_location: :root, notice: 'job was successfully destroyed.' }
+	      format.html { redirect_to boat_path(@boat.id), notice: 'Job was successfully destroyed.' }
 	    end
 	end
 
@@ -50,8 +54,11 @@ class JobsController < ApplicationController
 	def set_job
 		@job = Job.find_by(id: params[:id])
 	end
+	def set_boat
+		@boat = Boat.find_by(id: params[:boat_id])
+	end
 
 	def job_params
-		params.require(:job).permit(:name, :storage, :location)
+		params.require(:job).permit(:title, :description, :origin, :destination, :cost, :containers)
 	end
 end

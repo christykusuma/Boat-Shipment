@@ -6,6 +6,8 @@
 	Storage capacity: <%= @boat.storage %><br>
 	Current location: <%= @boat.location %>
 
+	<%= link_to 'Delete Boat', delete_boat_path(@boat), method: :delete %>
+
 	<h2>Current Jobs:</h2>
 
 	<!-- Total number of containers -->
@@ -22,7 +24,7 @@
 		</tr>
 		<% @boat.jobs.each do |job| %>
 		<tr>
-			<td><%= job.title %></td>
+			<td><%= link_to job.title, job_path(@boat.id, job.id) %></td> 
 			<td><%= job.description %></td>
 			<td><%= job.origin %></td>
 			<td><%= job.destination %></td>
@@ -50,7 +52,7 @@
 		<% @origin_jobs.each do |job| %>
 			<% unless job.assignments.any? %>
 		<tr>
-			<td><%= job.title %></td>
+			<td><%= link_to job.title, job_path(@boat.id, job.id) %></td> 
 			<td><%= job.description %></td>
 			<td><%= job.origin %></td>
 			<td><%= job.destination %></td>
