@@ -1,5 +1,8 @@
 <%= render 'users/navbar' %>
-
+<body>
+<div class="stars">
+</div>
+</div>
 <div class="user-profile">
 
     <!-- If there is a current user, display home page -->
@@ -16,6 +19,7 @@
 
   <div class="all-boats">
     <h1 style="display: inline;">Your boats:</h1> | <%= link_to 'Create New Boat', new_boat_path %>
+
     <% if @boats.length > 0 %>
       <div>
         <table>
@@ -52,3 +56,4 @@
   <% end %>
 
 </div>
+</body>
