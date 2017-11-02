@@ -1,6 +1,6 @@
 class JobsController < ApplicationController
 	before_action :set_job, only: [:edit, :profile, :handle_update, :handle_delete]
-	before_action :set_boat, only: [:profile, :handle_delete]
+	before_action :set_boat, only: [:profile, :new, :handle_create, :handle_update, :handle_delete]
 	# Job profile page
 	def profile
 		
@@ -20,7 +20,7 @@ class JobsController < ApplicationController
 		 @job = Job.new(job_params)
 		 respond_to do |format|
 		 	if @job.save
-		 	  format.html { redirect_to job_path, notice: 'Job was successfully created.' }
+		 	  format.html { redirect_to boat_path(@boat.id), notice: 'Job was successfully created.' }
 		 	else
 	        format.html { render :new }
 	      end
@@ -31,7 +31,7 @@ class JobsController < ApplicationController
 	def handle_update
 		respond_to do |format|
 	      if @job.update(job_params)
-	        format.html { redirect_to job_path, notice: 'Job was successfully updated.' }
+	        format.html { redirect_to boat_path(@boat.id), notice: 'Job was successfully updated.' }
 	      else
 	        format.html { render :edit }
 	      end

@@ -33,10 +33,10 @@ Rails.application.routes.draw do
 
 ########### JOB #################
   # New job button clicked --> new job page
-  get 'newjob' => 'jobs#new', as: :new_job
+  get 'newjob/:boat_id' => 'jobs#new', as: :new_job
 
   # New job form filled --> boat profile page
-  post 'newjob' => 'jobs#handle_create'
+  post 'newjob/:boat_id' => 'jobs#handle_create'
 
   # Job button clicked --> job profile page
   get 'jobprofile/:boat_id/jobs/:id' => 'jobs#profile', as: :job

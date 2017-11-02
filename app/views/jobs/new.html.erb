@@ -2,6 +2,6 @@
 
 <div class="new-job" class="page">
 
-	<%= render 'form', job: @job, url: newjob_path %>
+	<%= render 'form', job: @job, url: new_job_path(@boat.id), method: :post %>
 
 </div>

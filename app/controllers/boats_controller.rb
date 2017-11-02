@@ -4,7 +4,7 @@ class BoatsController < ApplicationController
 	# Boats profile page
 	def profile
 		@origin_jobs = Job.where(origin: @boat.location)
-		@origin_assignments = Job.joins("LEFT JOIN assignments ON jobs.id = assignments.job_id AND jobs.origin = \"#{@boat.location}\" WHERE assignments.job_id IS NULL")
+		@origin_assignments = Job.joins("LEFT JOIN assignments ON jobs.id = assignments.job_id WHERE assignments.job_id IS NULL")
 	end
 
 	# New boat page

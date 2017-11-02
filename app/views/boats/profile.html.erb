@@ -43,10 +43,9 @@
 
 	<% end %>
 
-	<h2>Available Jobs:</h2>
+	<h2 style="display: inline;">Available Jobs:</h2> | <%= link_to "Create new job", new_job_path(@boat.id) %>
 
 	<% if @origin_assignments.length > 0 %>
-
 
 	<table>
 		<tr>
