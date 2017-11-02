@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   post 'newboat' => 'boats#handle_create'
 
   # Boat button clicked --> boat profile page
-  get 'boatprofile' => 'boats#profile', as: :boat
+  get 'boatprofile/:id' => 'boats#profile', as: :boat
 
   # Edit boat button clicked --> edit boat profile
   get 'editboat/:id' => 'boats#edit', as: :edit_boat
@@ -39,16 +39,16 @@ Rails.application.routes.draw do
   post 'newjob' => 'jobs#handle_create'
 
   # Job button clicked --> job profile page
-  get 'jobprofile' => 'jobs#profile', as: :job
+  get 'jobprofile/:boat_id/jobs/:id' => 'jobs#profile', as: :job
 
   # Edit job button clicked --> edit job profile
-  get 'editjob' => 'jobs#edit', as: :edit_job
+  get 'editjob/:id' => 'jobs#edit', as: :edit_job
 
   # Edit job form filled --> job profile page
-  patch 'editjob' => 'jobs#handle_update'
+  patch 'editjob/:id' => 'jobs#handle_update'
 
   # Delete job button clicked --> boat profile page
-  delete 'jobprofile' => 'jobs#handle_delete', as: :delete_job
+  delete 'jobprofile/:boat_id/jobs/:id' => 'jobs#handle_delete', as: :delete_job
 
 
 end

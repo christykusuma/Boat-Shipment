@@ -28,7 +28,7 @@
           </tr>
           <% @boats.each do |boat| %>
             <tr>
-              <td><%= link_to boat.name, boat_path %></td>
+              <td><%= link_to boat.name, boat_path(boat.id) %></td>
               <td><%= boat.location %></td>
               <td><%= boat.storage %></td>
 

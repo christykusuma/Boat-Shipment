@@ -1,9 +1,9 @@
 class BoatsController < ApplicationController
 	before_action :set_boat, only: [:edit,:profile,:handle_update,:handle_delete]
+
 	# Boats profile page
 	def profile
-		@boat = Boat.find_by(params[:id])
-		@origin_jobs = Job.where(origin: @boat.jobs.first.origin)
+		@origin_jobs = Job.where(origin: @boat.location)
 	end
 
 	# New boat page
@@ -21,7 +21,7 @@ class BoatsController < ApplicationController
 	    @boat.user_id = current_user.id
 	    respond_to do |format|
 	      if @boat.save
-	        format.html { redirect_to boat_path, notice: 'Boat was successfully created.' }
+	        format.html { redirect_to :root, notice: 'Boat was successfully created.' }
 	      else
 	        format.html { render :new }
 	      end
@@ -32,7 +32,7 @@ class BoatsController < ApplicationController
 	def handle_update
 	    respond_to do |format|
 	      if @boat.update(boat_params)
-	        format.html { redirect_to boat_path, notice: 'Boat was successfully updated.' }
+	        format.html { redirect_back fallback_location: :root, notice: 'Boat was successfully updated.' }
 	      else
 	        format.html { render :edit }
 	      end
@@ -43,7 +43,7 @@ class BoatsController < ApplicationController
 	def handle_delete
 	    @boat.destroy
 	    respond_to do |format|
-	      format.html { redirect_back fallback_location: :root, notice: 'Boat was successfully destroyed.' }
+	      format.html { redirect_to :root, notice: 'Boat was successfully destroyed.' }
 	    end
 	end
 
