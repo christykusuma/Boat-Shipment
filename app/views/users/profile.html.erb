@@ -1,59 +1,72 @@
-<%= render 'users/navbar' %>
+
 <body>
-<div class="stars">
-</div>
-</div>
-<div class="user-profile">
-
+  <div class="user-profile" class="page">
     <!-- If there is a current user, display home page -->
-  <% if current_user %>
+    <% if current_user %>
 
-  <div class="user-info">
-    <%= image_tag current_user.photo.url(:medium) %>
-    <h1 style="display: inline;">
-    <%= current_user.fname %>
-    <%= current_user.lname %>
-    </h1> | <%= link_to 'Edit Profile', edit_user_registration_path(@user) %>
-
-  </div>
-
-  <div class="all-boats">
-    <h1 style="display: inline;">Your boats:</h1> | <%= link_to 'Create New Boat', new_boat_path %>
-
-    <% if @boats.length > 0 %>
-      <div>
+      <div class="user-info">
         <table>
           <tr>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Capacity</th>
-            <th>Earnings</th>
+            <td>
+              <%= image_tag current_user.photo.url(:medium) %>
+            </td>
+            <td>
+              <h1 style="display: inline;">
+              <%= current_user.fname %> <%= current_user.lname %>
+              </h1> | <%= link_to 'Edit profile', edit_user_registration_path(@user) %>
+            </td>
           </tr>
-          <% @boats.each do |boat| %>
-            <tr>
-              <td><%= link_to boat.name, boat_path(boat.id) %></td>
-              <td><%= boat.location %></td>
-              <td><%= boat.storage %></td>
-
-              <!-- Count earnings from total current jobs -->
-              <% earnings_count = 0 %>
-              <% boat.jobs.each do |job| %>
-                <% earnings_count += job.cost %>
-              <% end %>
-              <td><%= earnings_count %></td>
-            </tr>
-        </table>
+        <table>
       </div>
-      <br>
-      <% end %>
-    <% else %>
 
-      <p>You have no boats.</p>
+      <div class="all-boats">
+        <h2 style="display: inline;">Your boats:</h2> | <%= link_to 'Create new boat', new_boat_path %>
 
-  	<% end %>
+        <!-- If there are boats, show boats -->
+        <% if @boats.length > 0 %>
 
-  </div>
+          <div>
+            <table>
+              <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Capacity</th>
+                <th>Earnings</th>
+              </tr>
+
+              <!-- All boats for that user -->
+              <% @boats.each do |boat| %>
+                <tr>
+                  <td><%= link_to boat.name, boat_path(boat.id) %></td>
+                  <td><%= boat.location %></td>
+                  <td><%= boat.storage %></td>
+
+                    <!-- Count earnings from total current jobs -->
+                    <% earnings_count = 0 %>
+                    <% boat.jobs.each do |job| %>
+                      <% earnings_count += job.cost %>
+
+                    <!-- End of earnings count -->
+                    <% end %>
+                  <td><%= earnings_count %></td>
+                </tr>
+              <!-- End of going over all boats -->
+              <% end %>
+            </table>
+          </div>
+
+        <!-- If there are no boats to show -->
+        <% else %>
+
+          <p>You have no boats.</p>
+
+        <!-- End of show/no show boats -->
+        <% end %>
+      </div>
+
+  <!-- End of if there is a current user, show home page -->
   <% end %>
 
-</div>
+  </div>
+
 </body>
