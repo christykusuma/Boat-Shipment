@@ -67,6 +67,7 @@
     color: #EACE2F;
     font-size: 1em;
   }
+  // Boat profile page
   .delete-assignment {
     background-color: #CEB9DF;
     padding: 5px 10px;
@@ -90,7 +91,14 @@
   .delete-button:hover {
     background-color: black;
   }
-
+  // User profile page
+  .user-info {
+    .all-boats {
+      td {
+        background-color: orange;
+      }
+    }
+  }
 }
 
 /*
