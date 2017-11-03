@@ -2,13 +2,32 @@
 
 <div class="job-profile" class="page">
 
-	<h1 style="display: inline;"><%= @job.title %></h1> | <%= link_to 'Edit job', edit_job_path(@job) %><br>
-	<p>Description: <%= @job.description %></p>
-	<p>Origin:  <%= @job.origin %></p>
-	<p>Destination: <%= @job.destination %></p>
-	<p># of Containers: <%= @job.containers %></p>
-	<p>Cost: <%= @job.cost %><br>
+	<%= render 'users/navbar' %>
 
-	<%= link_to 'Delete job', delete_job_path(@boat, @job), method: :delete %>
+	<h1 style="display: inline;"><%= @job.title %></h1> | <%= link_to 'Edit job', edit_job_path(@job) %><br>
+	<table>
+		<tr>
+			<td style="color: #CEB9DF;">Cost:</td>
+			<td>$<%= @job.cost %></td>
+		</tr>
+		<tr>
+			<td style="color: #CEB9DF;">Origin:</td>
+			<td><%= @job.origin %></td>
+		</tr>
+		<tr>
+			<td style="color: #CEB9DF;">Destination:</td>
+			<td><%= @job.destination %></td>
+		</tr>
+		<tr>
+			<td style="color: #CEB9DF;"># of Containers:</td>
+			<td><%= @job.containers %></td>
+		</tr>
+		<tr>
+			<td style="color: #CEB9DF;">Description:</td>
+			<td><%= @job.description %></td>
+		</tr>
+	</table>
+
+	<%= link_to 'Delete Job', delete_job_path(@boat, @job), method: :delete, :class => "delete-button" %>
 
 </div>
