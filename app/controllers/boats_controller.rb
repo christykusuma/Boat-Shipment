@@ -65,7 +65,8 @@ class BoatsController < ApplicationController
 	    @assignment = Assignment.find_by(assignment_params)
 	    @assignment.destroy
 	    respond_to do |format|
-	      format.html { redirect_back fallback_location: :root}
+	      #format.html { redirect_back fallback_location: :root}
+	      format.js
 	    end
 	  end
 

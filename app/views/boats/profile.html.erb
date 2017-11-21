@@ -22,7 +22,7 @@
 			<th>Cost</th>
 		</tr>
 		<% @boat.jobs.each do |job| %>
-		<tr>
+		<tr id="job_<%= job.id %>">
 			<td style="width: 150px;"><%= link_to job.title, job_path(@boat.id, job.id) %></td> 
 			<td style="width: 100px;"><%= job.origin %></td>
 			<td style="width: 100px;"><%= job.destination %></td>
