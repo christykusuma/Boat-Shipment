@@ -1,6 +1,6 @@
-<%= render 'users/navbar' %>
-
 <div class="edit-job" class="page">
+
+	<%= link_to '<', :back, :class => "back-button" %>
 
 	<%= render 'form', job: @job, url: edit_job_path(@job) %>
 

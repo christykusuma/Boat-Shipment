@@ -1,6 +1,9 @@
-<%= render 'users/navbar' %>
 
 <div class="new-job" class="page">
+
+	<%= link_to '<', :back, :class => "back-button" %>
+
+	<h2 class="title">Create New Job</h2>
 
 	<%= render 'form', job: @job, url: new_job_path(@boat.id), method: :post %>
 

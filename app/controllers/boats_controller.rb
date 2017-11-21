@@ -53,7 +53,7 @@ class BoatsController < ApplicationController
 	    @assignment = Assignment.new(assignment_params)
 	    respond_to do |format|
 	      if @assignment.save
-	      format.html { redirect_back fallback_location: :root, notice: 'Job was successfully added.' }
+	      format.html { redirect_back fallback_location: :root }
 	      else
 	        format.html { render boat_path }
 	      end
@@ -65,7 +65,8 @@ class BoatsController < ApplicationController
 	    @assignment = Assignment.find_by(assignment_params)
 	    @assignment.destroy
 	    respond_to do |format|
-	      format.html { redirect_back fallback_location: :root, notice: 'Job was successfully deleted.' }
+	      #format.html { redirect_back fallback_location: :root}
+	      format.js
 	    end
 	  end
 

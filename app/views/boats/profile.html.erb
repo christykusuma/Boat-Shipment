@@ -1,6 +1,7 @@
 
 
 <div class="boat-profile" class="page">
+	<%= render 'users/navbar' %>
 
 	<h1 class="title" style="display: inline;"><%= @boat.name %></h1> | <%= link_to 'Edit boat', edit_boat_path(@boat) %><br>
 	<p>Storage capacity: <%= @boat.storage %></p>
@@ -14,30 +15,28 @@
 
 	<table>
 		<tr>
-			<th>Title</th>
-			<th>Description</th>
+			<th>Type</th>
 			<th>Origin</th>
 			<th>Destination</th>
 			<th># of Containers</th>
 			<th>Cost</th>
 		</tr>
 		<% @boat.jobs.each do |job| %>
-		<tr>
-			<td><%= link_to job.title, job_path(@boat.id, job.id) %></td> 
-			<td><%= job.description %></td>
-			<td><%= job.origin %></td>
-			<td><%= job.destination %></td>
+		<tr id="job_<%= job.id %>">
+			<td style="width: 150px;"><%= link_to job.title, job_path(@boat.id, job.id) %></td> 
+			<td style="width: 100px;"><%= job.origin %></td>
+			<td style="width: 100px;"><%= job.destination %></td>
 			<td><%= job.containers %></td><% container_count += job.containers %>
-			<td><%= job.cost %></td>
+			<td style="width: 100px;">$<%= job.cost %></td>
 
-			<td><%= link_to "x", delete_assignment_path(@boat.id, job.id), method: :delete, :class => "delete-assignment" %></td>
+			<td><%= link_to "x", delete_assignment_path(@boat.id, job.id), method: :delete, :class => "delete-assignment", remote: true %></td>
 		</tr>
 	<% end %>
 
 	</table>
 	<% else %>
 
-		<p>You have no current jobs.</p>
+		<p style="padding-bottom: 30px;">You have no current jobs.</p>
 
 	<% end %>
 
@@ -48,7 +47,6 @@
 	<table>
 		<tr>
 			<th>Title</th>
-			<th>Description</th>
 			<th>Origin</th>
 			<th>Destination</th>
 			<th># of Containers</th>
@@ -59,17 +57,16 @@
 			<% unless job.assignments.any? %>
 
 		<tr>
-			<td><%= link_to job.title, job_path(@boat.id, job.id) %></td> 
-			<td><%= job.description %></td>
-			<td><%= job.origin %></td>
-			<td><%= job.destination %></td>
+			<td style="width: 150px;"><%= link_to job.title, job_path(@boat.id, job.id) %></td> 
+			<td style="width: 100px;"><%= job.origin %></td>
+			<td style="width: 100px;"><%= job.destination %></td>
 			<td><%= job.containers %></td>
-			<td><%= job.cost %></td>
+			<td style="width: 100px;">$<%= job.cost %></td>
 
 			<!-- If adding job would exceed capacity, will not show add job button -->
 			<% if (container_count + job.containers) <= @boat.storage %>
 
-			<td><%= link_to "Add", add_assignment_path(@boat.id, job.id), :class => "add-button" %></td>
+			<td><%= link_to "+", add_assignment_path(@boat.id, job.id), :class => "add-assignment" %></td>
 
 			<% end %>
 
@@ -82,10 +79,10 @@
 
 	<% else %>
 
-		<p>There are no more available jobs.</p>
+		<p style="padding-top: 15px; padding-bottom: 30px;">There are no more available jobs.</p>
 
 	<% end %>
 
-		<%= link_to 'Delete', delete_boat_path(@boat), method: :delete, :class => "delete-button" %>
+		<%= link_to 'Delete Boat', delete_boat_path(@boat), method: :delete, :class => "delete-button" %>
 
 </div>

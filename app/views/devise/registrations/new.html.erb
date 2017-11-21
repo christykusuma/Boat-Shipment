@@ -1,3 +1,7 @@
+<div class="edit-user">
+
+  <%= link_to '<', :back, :class => "back-button" %>
+
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -27,3 +31,5 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>

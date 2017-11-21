@@ -2,6 +2,8 @@
 
 <div class="edit-boat" class="page">
 
+	<%= link_to '<', :back, :class => "back-button" %>
+
 	<h2 class="title">Edit Boat</h2>
 
 	<%= render 'form', boat: @boat, url: edit_boat_path(@boat) %>
